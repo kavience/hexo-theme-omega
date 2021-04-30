@@ -1,0 +1,43 @@
+---
+layout: layout
+---
+
+<style>
+    .content-404 {
+        padding: 0;
+    }
+    .content-404-block {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        background-image: url('<%= page["header_img"] || theme["header_img"] %>');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+    }
+    .site-heading {
+        text-align: center;
+        color: #ffffff;
+    }
+    .site-heading .title {
+        font-size: 50px;
+    }
+    .site-heading .title,
+    .site-heading .sub-title {
+        display: block;
+    }
+</style>
+
+<div class="content-404-block">
+    <div class="site-heading">
+        <span class="title">404</span>
+        <span class="sub-title"><%= page.description || config.subtitle || "" %></span>
+    </div>
+</div>
+
+<script>
+    $('#intro-header').remove();
+</script>

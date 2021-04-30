@@ -1,0 +1,94 @@
+---
+layout: layout
+---
+
+<div class="container">
+	<div class="row">
+		<div class="
+			col-lg-8 col-lg-offset-1
+			col-md-8 col-md-offset-1
+			col-sm-12
+			col-xs-12
+			content-container
+		">
+			<% page.posts.each(function(post){ %>
+				<% if (post.hidden) { %>
+					<span></span>
+				<% } else { %>
+					<div class="post-preview">
+						<a href="<%- config.root %><%- post.path %>">
+							<h2 class="post-title">
+								<% if (post.top) {%>
+									<span class="text-primary"> <i class="fa fa-thumb-tack"></i>置顶 </span>
+									<span class="post-meta-divider">|</span>
+								<%}%> 
+								<%- post.title || "Untitled" %>
+							</h2>
+							<h3 class="post-subtitle">
+								<%- post.subtitle || "" %>
+							</h3>
+							<div class="post-content-preview">
+								<%- truncate(strip_html(post.content), {length: 200, omission: '...'})
+								%>...
+							</div>
+						</a>
+						<p class="post-meta">
+							Posted by <%- post.author || config.author %> on <%= post.date.format(config.date_format) %>
+						</p>
+						<div class="tags">
+							<% post.tags.forEach(function(tag){ %>
+								<a href="<%= config.root %>tags/<%= tag.name %>" title="<%= tag.name %>"><%= tag.name %></a>
+							<% }) %>
+						</div>
+					</div>
+					<hr />
+				<% } %> 
+			<% }); %>
+
+			<!-- Pager Start -->
+			<div id="kkpager"></div>
+			<script>
+				$(function(){
+					kkpager.generPageHtml({
+						pno: '<%- page.current %>',
+						total: '<%- page.total %>',
+						totalRecords: '<%- site.posts.length %>',
+						mode: 'link',
+						hrefFormer: '/page',
+						getLink: function(n){
+						if(n == 1){
+							return '/';
+						}
+						return this.hrefFormer + '/' + n;
+						},
+						lang: {
+							firstPageText: '<%= __("firstPageText") %>',
+							lastPageText: '<%= __("lastPageText") %>',
+							lastPageText: '<%= __("lastPageText") %>',
+							lastPageTipText: '<%= __("lastPageTipText") %>',
+							prePageText: '<%= __("prePageText") %>',
+							prePageTipText: '<%= __("prePageTipText") %>',
+							nextPageText: '<%= __("nextPageText") %>',
+							nextPageTipText: '<%= __("nextPageTipText") %>',
+							totalPageBeforeText: '<%= __("totalPageBeforeText") %>',
+							totalPageAfterText: '<%= __("totalPageAfterText") %>',
+							currPageBeforeText: '<%= __("currPageBeforeText") %>',
+							currPageAfterText: '<%= __("currPageAfterText") %>',
+							totalInfoSplitStr: '<%= __("totalInfoSplitStr") %>',
+							totalRecordsBeforeText: '<%= __("totalRecordsBeforeText") %>',
+							totalRecordsAfterText: '<%= __("totalRecordsAfterText") %>',
+							gopageBeforeText: '<%= __("gopageBeforeText") %>',
+							gopageAfterText: '<%= __("gopageAfterText") %>',
+							gopageButtonOkText: '<%= __("gopageButtonOkText") %>',
+							buttonTipBeforeText: '<%= __("buttonTipBeforeText") %>',
+							buttonTipAfterText: '<%= __("buttonTipAfterText") %>',
+						}
+					});
+				});
+			</script>
+			<!-- Pager End -->
+		</div>
+		<%- partial('_partial/sidebar') %>
+	</div>
+</div>
+

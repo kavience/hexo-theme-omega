@@ -1,0 +1,11 @@
+ <!-- Reward Start -->
+ <% if(theme['reward']) { %>
+  <div class="reward">
+      <div class="reward-button">赏 <span class="reward-code"> 
+          <span class="alipay-code"> <img class="alipay-img" src="<%= theme['alipay'] %>"><b>支付宝打赏</b></span> 
+          <span class="wechat-code"> <img class="wechat-img" src="<%= theme['wechatpay'] %>"><b>微信打赏</b> </span>
+          </span></div>
+      <p class="reward-notice"><%= theme['reward_comment'] %></p>
+  </div>
+<% } %>
+<!-- Reward End -->

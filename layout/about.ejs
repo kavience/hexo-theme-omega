@@ -1,0 +1,27 @@
+---
+layout: layout
+---
+
+<!-- Page Start -->
+<div class="container">
+    <div class="row">
+        <div class="
+            col-lg-8 col-lg-offset-1
+            col-md-8 col-md-offset-1
+            col-sm-12
+            col-xs-12
+            content-container
+        ">
+            <%- page.content || body %>
+            <br>
+            <% if (page.reward) { %>
+                <%- partial('_partial/reward') %>
+            <% } %>
+            <% if (page.comment) { %>
+                <%- partial('_partial/comment') %>
+            <% } %>
+        </div>
+        <%- partial('_partial/sidebar') %>
+    </div>
+</div>
+<!-- Page End -->

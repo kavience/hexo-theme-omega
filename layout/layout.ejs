@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="<%= config.language %> ">
+<!-- Head Start -->
+<%- partial('_partial/head') %>
+<!-- Head End -->
+<body ontouchstart="">
+    <!-- Header Start -->
+    <% if(theme.banner) { %> 
+        <%- partial('_partial/header', { cache: true }) %>
+    <% } else { %>
+        <%- partial('_partial/header-no-banner', { cache: true }) %>
+    <% } %> 
+    <!-- Header End -->
+
+    <!-- Nav Start -->
+    <%- partial('_partial/nav', { cache: true }) %>
+    <!-- Nav End -->
+
+    <!-- Main Content Start -->
+    <div class="main-content content-<%- page.layout %> ">
+        <%- body %>
+    </div>
+    <!-- Main Content End -->
+
+    <span id="rocket"></span>
+
+    <!-- Google Analytics -->
+    <% if (theme.ga_track_id) { %>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=<%= theme.ga_track_id %>" ></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+            gtag("config", "<%= theme.ga_track_id %>");
+        </script>
+    <% } %>
+
+    <!-- Baidu Tongji -->
+    <% if (theme.ba_track_id) { %>
+        <script>
+            let _baId = "<%= theme.ba_track_id %>";
+            let _hmt = _hmt || [];
+            (function () {
+                let hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?" + _baId;
+                let s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+    <% } %>
+
+    <script>
+        // TOC scroll
+        $(".toc-nav-link").bind("click touch", function () {
+            // 根据a标签的href转换为id选择器，获取id元素所处的位置
+            $('html,body').animate({ scrollTop: ($($(this).attr('href')).offset().top) }, 300);
+        });
+    </script>
+</body>
+</html>

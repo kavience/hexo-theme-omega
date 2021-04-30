@@ -1,0 +1,58 @@
+<style type="text/css">
+    header.intro-header {
+        <% if (is_home()) { %>
+            background-image: url('<%= theme["header_img"] %>') 
+        <%} else if (is_post()){%>
+            background-image: url('<%= page["header_img"] || theme["article_img"]  %>')
+        <%} else if (page.category){%>
+            background-image: url('<%= theme["archive_category_img"]  %>')
+        <%} else if (page.tag){%>
+            background-image: url('<%= theme["archive_tag_img"]  %>')
+        <%} else {%>
+            background-image: url('<%= page["header_img"] || theme["archives_img"] %>')
+        <%} %>
+    }
+</style>
+<header id="intro-header" class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <% if (is_post()) { %>
+                    <div class="post-heading">
+                        <div class="tags">
+                            <% page.tags.forEach(function(tag){ %>
+                            <a class="tag" href="<%= config.root %>tags/<%= tag.name %>" title="<%= tag.name %>"><%= tag.name %></a>
+                            <% }) %>
+                        </div>
+                        <h1><%= page.title %></h1>
+                        <h2 class="subheading"><%= page.subtitle || "" %></h2>
+                        <span class="meta">
+                            Posted by <%- page.author || config.author %> on
+                            <%= page.date.format(config.date_format) %>
+                        </span>
+                    </div>
+                <% } else if (is_home()) { %>
+                    <div class="site-heading">
+                        <h1><%= page.title || config.title %></h1>
+                        <span class="subheading"><%= page.description || config.subtitle || "" %></span>
+                    </div>
+                <% } else { %>
+                    <div class="site-heading">
+                        <h1><%= page.category || page.tag || config.title %></h1>
+                        <span class="subheading">
+                            <% if (page.category) { %>
+                                All articles under the <%- page.category %> 
+                            <% } else if (page.tag) { %>
+                                All articles under the <%- page.tag %> 
+                            <% } else if (page.archive) { %>
+                                All articles write in <%- page.year %>
+                            <% } else { %>
+                                <span class="subheading"><%= page.description || config.subtitle || "" %></span>
+                            <% } %>
+                        </span>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</header>

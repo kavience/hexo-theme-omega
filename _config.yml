@@ -1,0 +1,108 @@
+# omega setting start
+
+# ----------------------------------------------------------
+# Site settings
+beian: 赣ICP备17009879号
+SEOTitle: kavience | Blog
+
+# ----------------------------------------------------------
+# Banner settings
+banner: true # close all header banner if false
+header_img: /img/header_img/home.jpg
+article_img: /img/header_img/article-bg.jpg
+archives_img: /img/header_img/archive.jpg
+archive_tag_img: /img/header_img/archive-tag.jpg
+archive_category_img: /img/header_img/archive-category.jpg
+404_img: /img/header_img/404.jpg
+
+# ----------------------------------------------------------
+# Contact settings
+email: kavience@gmail.com
+zhihu_username: kavience-xiaofan
+github_username: kavience
+twitter_username: Mr_Kavience
+# weibo_username: xxx
+# facebook_username:  xxx
+# linkedin_username:  xxx
+sitemapIcon: true
+RSS: true
+
+# ----------------------------------------------------------
+# Comment settings
+comment_method: gitalk # gitalk or disqus
+## Method 1: gitalk https://github.com/gitalk/gitalk
+gitalk:
+  clientID: 'd25cda615a572205be1e'
+  clientSecret: 'faa4cf10f1daea3d4701f8be90d80feb88c818ac'
+  repo: 'blog'
+  owner: 'kavience'
+  admin: ['kavience']
+  distractionFreeMode: false
+## Method 2: disqus
+# disqus_username: kavience
+
+# ----------------------------------------------------------
+# Analytics settings
+## Baidu Analytics
+# ba_track_id: xxx
+## Google Analytics
+ga_track_id: "UA-171834825-2"
+ga_domain: www.kavience.com
+
+# ----------------------------------------------------------
+# Reward settings
+reward: true
+reward_comment: 赞赏一下
+wechatpay: /img/reward/wechat.png
+alipay: /img/reward/alipay.png
+
+# ----------------------------------------------------------
+# Sidebar settings
+sidebar_about_description: "种一棵树最好的时间是十年前，其次是现在。"
+sidebar_avatar: /img/avatar/my-avatar.jpg
+widgets:
+  - short-about
+  - recent-posts
+  - category
+  - archive
+  - featured-tags
+  - copyright
+
+# ----------------------------------------------------------
+# less vars
+less:
+  options:
+    globalVars:
+      bg-color: '#f1e5c9'
+      main-bg-color: '#f6f8fa'
+      text-main-color: '#404046'
+      text-secondary-color: '#a3a3a3'
+      text-threed-color: '#808080'
+      hover-color: '#0085a1'
+      border-color: gray
+      ## highlight vars
+      # highlight-background: "#f6f8fa"
+      # highlight-current-line: "#efefef"
+      # highlight-selection: "#d6d6d6"
+      # highlight-foreground: "#24292e"
+      # highlight-comment: "#8e908c"
+      # highlight-red: "#c82829"
+      # highlight-orange: "#f5871f"
+      # highlight-yellow: "#eab700"
+      # highlight-green: "#718c00"
+      # highlight-aqua: "#3e999f"
+      # highlight-blue: "#4271ae"
+      # highlight-purple: "#8959a8"
+
+      highlight-background: "#002451"
+      highlight-current-line: "#00346e"
+      highlight-selection: "#003f8e"
+      highlight-foreground: "#ffffff"
+      highlight-comment: "#7285b7"
+      highlight-red: "#ff9da4"
+      highlight-orange: "#ffc58f"
+      highlight-yellow: "#ffeead"
+      highlight-green: "#d1f1a9"
+      highlight-aqua: "#99ffff"
+      highlight-blue: "#bbdaff"
+      highlight-purple: "#ebbbff"

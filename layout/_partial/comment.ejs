@@ -1,0 +1,40 @@
+<!-- Comment Start -->
+<div class="comment">
+  <% if (theme['comment_method'] === 'gitalk') { %>
+      <div id="<%- page.title  %>" class="gitalk"></div>
+  <% } %>
+  <% if (theme['comment_method'] === 'disqus') { %>
+      <div id="disqus_thread" class="disqus"></div>
+  <% } %>
+
+  <% if (theme['comment_method'] === 'gitalk') { %>
+      <script>
+          new Gitalk({
+            clientID: `<%- theme['gitalk']['clientID'] %>`,
+            clientSecret: `<%- theme['gitalk']['clientSecret'] %>`,
+            repo: `<%- theme['gitalk']['repo'] %>`,
+            owner: `<%- theme['gitalk']['owner'] %>`,
+            admin: `<%- theme['gitalk']['admin'] %>`,
+            id: '<%- page.title  %>',
+            title: '<%- page.title  %>',
+            distractionFreeMode: `<%- theme['gitalk']['distractionFreeMode'] %>`,
+            language: `<%- config['language'] %>`
+          }).render('<%- page.title  %>');
+      </script>
+  <% } %>
+
+  <% if(theme['comment_method'] === 'disqus') { %>
+      <script type="text/javascript">
+          let disqus_shortname = "<%= theme['disqus_username'] %>";
+          let disqus_identifier = "<%= page.permalink %>";
+          let disqus_url = "<%= page.permalink %>";
+
+          (function() {
+              let dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+      </script>
+  <% } %>
+</div>            
+<!-- Comment End -->

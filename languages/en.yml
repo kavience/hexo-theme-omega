@@ -1,0 +1,35 @@
+home: home
+search: search
+searchTip: placeholder
+about: ABOUT
+recentPosts: RECENT POSTS
+category: CATEGORIES
+archive: ARCHIVES
+tag: TAGS
+contents: Contents
+prevPost: PREV POST
+nextPost: NEXT POST
+author: Author
+postLink: Post Link
+postReprint: 'Indicate: 《%s》reprint %s，original author: %s '
+postLicense: 'License: Attribution-NonCommercial-NoDerivs 3.0 Unported( CC BY-NC-ND 3.0 )'
+firstPageText: first page
+firstPageTipText: first page
+lastPageText: last page
+lastPageTipText: last page
+prePageText: prev page
+prePageTipText: prev page
+nextPageText: next page
+nextPageTipText: next page
+totalPageBeforeText: 'total '
+totalPageAfterText: ' '
+currPageBeforeText: 'current '
+currPageAfterText: ' '
+totalInfoSplitStr: ' / '
+totalRecordsBeforeText: total
+totalRecordsAfterText: 'posts'
+gopageBeforeText: ' / go'
+gopageAfterText: ' '
+gopageButtonOkText: submit
+buttonTipBeforeText: now
+buttonTipAfterText: page

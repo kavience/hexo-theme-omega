@@ -1,0 +1,36 @@
+<% if (page.catalog) { %>
+	<% if (is_post()){ %>
+		<aside id="sidebar">
+			<div id="toc" class="toc-article">
+				<strong class="toc-title">
+					<%= __('contents') %>
+				</strong>
+				<% if (toc(page.content) != "" ){ %>
+					<%- toc(page.content, { "class" : "toc-nav" }) %>
+				<% } else { %>
+					<ol class="nav">
+						<%= __('none') %>
+					</ol>
+				<% } %>
+			</div>
+		</aside>
+	<% } %>
+<% } %>
+
+<script>
+let toc = document.getElementById('toc')
+if (toc != null) {
+    window.addEventListener("scroll", scrollcatelogHandler);
+    let tocPosition = toc.offsetTop;
+    function scrollcatelogHandler(e) {
+        let event = e || window.event,
+            target = event.target || event.srcElement;
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop > tocPosition - 60) {
+            toc.classList.add("toc-fixed");
+        } else {
+            toc.classList.remove("toc-fixed");
+        }
+    }
+}
+</script>

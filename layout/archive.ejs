@@ -1,0 +1,134 @@
+---
+layout: layout
+---
+
+<div class="container">
+    <div class="row">
+        <div class="
+            col-lg-8 col-lg-offset-1
+            col-md-8 col-md-offset-1
+            col-sm-12
+            col-xs-12
+            content-container
+        ">
+            <!-- Archive / Tags / Categories  Start -->
+            <% if (page.category) { %>
+                <!-- Categories Start -->
+                <% site.categories.forEach(function(category){ %>
+                    <% if (category.name == page.category) { %>
+                    <div class="one-tag-list">
+                        <span class="fa fa-newspaper-o listing-seperator" id="<%= category.name %>">
+                            <span class="tag-text"><%= category.name %></span>
+                        </span>
+                        <ul>
+                        <% category.posts.map(function(post){  %>
+                        <li >
+                            <%= post.date.format('YYYY-MM-DD') %>
+                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            <a href="<%- config.root %><%- post.path %>" style="color: #0085a1">
+                                <span>
+                                    <%- post.title || "Untitled" %>
+                                </span>
+                            </a>
+                        </li>
+                        <% }) %>
+                        </ul>
+                    </div>
+                    <% } %>
+                  <% }) %>
+                <!-- Categories End -->
+            <% } else if (page.tag) { %>
+                <!-- Tags Start -->
+                <div id='tag_cloud' class="tags tag-page-tags">
+                    <% site.tags.map(function(tag){  %>
+                        <a href="<%= config.root %>tags/<%= tag.name %>" title="<%= tag.name %>" rel="<%= tag.length %>"><%= tag.name %></a>
+                    <% }) %>
+                </div>
+
+                <% site.tags.map(function(tag){  %>
+                    <% if (tag.name == page.tag) { %>
+                        <div class="one-tag-list">
+                            <span class="fa fa-tag listing-seperator" id="<%= tag.name %>">
+                                <span class="tag-text"><%= tag.name %></span>
+                            </span>
+                            <% tag.posts.map(function(post){  %>
+                            <div class="post-preview">
+                                <a href="<%- config.root %><%- post.path %>">
+                                    <h2 class="post-title">
+                                        <%- post.title || "Untitled" %>
+                                    </h2>
+                                    <% if (post.subtitle && post.subtitle.length) { %>
+                                        <h3 class="post-subtitle">
+                                            <%- post.subtitle %>
+                                        </h3>
+                                    <% } %>
+                                </a>
+                            </div>
+                            <hr>
+                            <% }) %>
+                        </div>
+                    <% } %>
+                <% }) %>
+                <!-- Tags End -->
+            <% } else { %>
+                <!-- Archives Start -->
+                <% 
+                var years = {};
+                site.posts.sort('date').reverse().forEach(function(post){
+                    var year = post.date.year()
+                    if(years[year]===undefined){
+                        years[year] = [];
+                    }
+                    years[year].push(post);
+                });
+                %>
+    
+                <% if (is_year()) { %>
+                    <div class="one-tag-list">
+                        <span class="fa fa-calendar-times-o listing-seperator" id="<%= page.year %>">
+                            <span class="tag-text"><%= page.year %></span>
+                        </span>
+                        <ul>
+                        <% years[page.year].map(function(post){  %>
+                            <li >
+                            <%= post.date.format('MM-DD') %>
+                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            <a href="<%- config.root %><%- post.path %>" style="color: #0085a1">
+                                <span>
+                                    <%- post.title || "Untitled" %>
+                                </span>
+                            </a>
+                        </li>
+                        <% }) %>
+                        </ul>
+                    </div>
+                <% } else { %>
+                    <% Object.keys(years).reverse().forEach(function(year){ %>
+                        <div class="one-tag-list">
+                            <span class="fa fa-calendar-times-o listing-seperator" id="<%= year %>">
+                                <span class="tag-text"><%= year %></span>
+                            </span>
+                            <ul>
+                            <% years[year].map(function(post){  %>
+                                <li >
+                                <%= post.date.format('MM-DD') %>
+                                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                <a href="<%- config.root %><%- post.path %>" style="color: #0085a1">
+                                    <span>
+                                        <%- post.title || "Untitled" %>
+                                    </span>
+                                </a>
+                            </li>
+                            <% }) %>
+                            </ul>
+                        </div>
+                    <% }) %>
+                <% } %> 
+                <!-- Archives End -->
+            <% } %> 
+            <!-- Archive / Tags / Categories  End -->
+        </div>
+
+        <%- partial('_partial/sidebar') %>
+    </div>
+</div>

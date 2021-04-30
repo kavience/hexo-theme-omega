@@ -1,0 +1,78 @@
+---
+layout: layout
+---
+
+<!-- Post Content Start -->
+<article>
+    <div class="container" style="overflow: hidden">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container post-markdown-body
+            ">
+                <%- page.content %>
+                
+                <hr>
+                <div class="row">
+                    <div class="col-md-12 post-statement">
+                        <span><%= __('author') %>: <%- page.author || config.author %></span>
+                        <span><%= __('postLink') %>: <a href="<%= url %>"><%= url %> </a></span>
+                        <span><%= __('postReprint', page.title || config.author, url, config.author) %> </span>
+                        <span><a href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh"><%= __('postLicense') %></a></span>
+                    </div>
+                    <div class="col-md-12">
+                        <!-- Categories Start -->
+                        <section>
+                            <h5><a href="<%= config.root %>categories/"><%= __('category') %> </a></h5>
+                            <div class="tags">
+                                <% page.categories.forEach(function(category){ %>
+                                    <a class="tag" href="<%= config.root %>categories/<%= category.name %>" title="<%= category.name %>"><%= category.name %></a>
+                                <% }) %>
+                            </div>
+                        </section>
+                        <!-- Categories End -->
+                    </div>
+                    <div class="col-md-12">
+                        <!-- Tags Start -->
+                        <section class="past-tags">
+                            <h5><a href="<%= config.root %>tags/"><%= __('tag') %> </a></h5>
+                            <div class="tags">
+                                <% page.tags.forEach(function(tag){ %>
+                                    <a class="tag" href="<%= config.root %>tags/<%= tag.name %>" title="<%= tag.name %>"><%= tag.name %></a>
+                                <% }) %>
+                            </div>
+                        </section>
+                        <!-- Tags End -->
+                    </div>
+                </div>
+
+                <hr>
+                <!-- Pager Start -->
+                <ul class="pager">
+                    <% if (page.prev){ %>
+                        <li class="previous">
+                            <a href="<%- config.root %><%- page.prev.path %>" data-toggle="tooltip" data-placement="top" title="<%- page.prev.title %>">&larr; <%= __('prevPost') %> </a>
+                        </li>
+                    <% } %>
+                    <% if (page.next){ %>
+                        <li class="next">
+                            <a href="<%- config.root %><%- page.next.path %>" data-toggle="tooltip" data-placement="top" title="<%- page.next.title %>"><%= __('nextPost') %>  &rarr;</a>
+                        </li>
+                    <% } %>
+                </ul>
+                <!-- Pager End -->
+               
+                <%- partial('_partial/comment') %>
+                
+                <br>
+                <%- partial('_partial/comment') %>
+            </div>
+            
+            <!-- Tabe of Content -->
+            <%- partial('_partial/toc') %>
+        </div>
+    </div>
+</article>

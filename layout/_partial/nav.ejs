@@ -1,0 +1,133 @@
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<%= config.root %>"><%= config.title %></a>
+    </div>
+
+    <div id="blog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#" id="search" ><img style="width: 16px;height: 16px;margin: -2px 5px 0px 0;" src="<%- url_for('icons/search.svg') %> " alt=""><%= __('search') %> </a>
+          </li>
+          <li>
+            <a href="<%= config.root %>"><%= __('home') %> </a>
+          </li>
+          <% 
+            let navs = (site.pages.map(page => page)).sort(function (page1, page2){
+              return page1['sort'] - page2['sort']; 
+            })
+          %> 
+
+          <% navs.forEach(page => { %> 
+            <% if (page.title) {%>
+              <li>
+                <a href="<%= config.root %><%= page.path.replace('index.html', '') %>"><%= page.title %></a>
+              </li>
+            <% } %> 
+          <%}) %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Search Modal -->
+<div class="modal search-modal">
+  <div class="search-container">
+    <div class="search-container-top">
+      <img src="<%- url_for('icons/close.svg') %>" alt="">
+    </div>
+    <input class="search-container-input" placeholder="<%= __('searchTip') %> " type="text">
+    <div class="search-container-content"></div>
+  </div>
+</div>
+
+<script>
+  $('.search-container').css({ "height": window.innerHeight, "overflow": 'hidden' })
+  $('.search-container-content').css({ "height": window.innerHeight - 70, "overflow": 'scroll' })
+  var allArticles = [];
+  var xReq = new XMLHttpRequest();
+  xReq.open('GET', '/search.json');
+  xReq.send();
+  xReq.onreadystatechange = function(){
+    if(xReq.readyState === 4 && xReq.status === 200){
+      allArticles = JSON.parse(xReq.responseText);
+    }
+  }
+
+  $('#search').on('click', function() {
+    document.body.style['overflow-y'] = 'hidden'
+    $('.search-modal').addClass('modal-show');
+  });
+  
+  $('.search-modal,.search-container-top img').on('click', function() {
+    document.body.style['overflow-y'] = 'scroll';
+    $('.search-modal').removeClass('modal-show');
+  });
+  
+  $('.search-container').on('click', function(e) {
+    e.stopPropagation();
+  });
+  
+  $('.search-container-input').bind('input propertychange', function(e) {
+    var searchValue = e.currentTarget.value;
+    var correctArticles = allArticles.filter(article => article.content.indexOf(searchValue) > -1 || article.title.indexOf(searchValue) > -1)
+    var articleListHtml = '';
+    for (let index = 0; index < correctArticles.length; index++) {
+      var article = correctArticles[index];
+      article.description = article.content.replace(/<[^>]+>/g,"");
+      var title = article.title, description = '';
+      var searchReg = RegExp(searchValue, 'i');
+      var searchRegGlobal = RegExp(searchValue, 'ig');
+      if (article.title.match(searchReg)) {
+        title = article.title.replaceAll(searchRegGlobal, `<span class="search-value-active">${searchValue}</span>`);
+      }
+      var contentMatch = article.description.match(searchReg);
+      if (contentMatch) {
+        description = `...${article.description.substr(contentMatch['index'], 210)}...`.replaceAll(searchRegGlobal, `<span class="search-value-active">${searchValue}</span>`);
+      } else {
+        description = article.description.substr(0, 200);
+      }
+
+      articleListHtml += `<div class="search-container-content_item">
+        <a href="${article.url}" class="search-container-content_item-title">${title}</a>
+        <div class="search-container-content_item-description">${description}</div>
+      </div>`
+    }
+
+    $('.search-container-content').html(articleListHtml);
+  });
+  
+</script>
+<script>
+  var $body = document.body;
+  var $toggle = document.querySelector(".navbar-toggle");
+  var $navbar = document.querySelector("#blog_navbar");
+  var $collapse = document.querySelector(".navbar-collapse");
+
+  $toggle.addEventListener("click", handleMagic);
+  function handleMagic(e) {
+    if ($navbar.className.indexOf("in") > 0) {
+      $navbar.className = " ";
+      // wait until animation end.
+      setTimeout(function () {
+        // prevent frequently toggle
+        if ($navbar.className.indexOf("in") < 0) {
+          $collapse.style.height = "0px";
+        }
+      }, 400);
+    } else {
+      $collapse.style.height = "auto";
+      $navbar.className += " in";
+    }
+  }
+</script>

@@ -1,0 +1,169 @@
+  @line-height : 1.6em;
+  @font-size : 14px;
+  @article-padding : 20px;
+  @color-border : #ddd;
+  @code-font-size : 13px;
+  @code-background : #eee;
+  @code-foreground : #555;
+  @code-border-radius: 4px;
+
+  .clearfix {
+
+    &::before,
+    &::after {
+      content: "";
+      display: table
+    }
+
+    &::after {
+      clear: both
+    }
+
+    zoom :1 if support-for-ie
+  }
+
+  .code-block {
+    overflow: auto;
+    margin: 16px 0;
+    padding: 16px;
+    font-size: @code-font-size;
+    color: @highlight-foreground;
+    background: @highlight-background;
+    line-height: @line-height;
+    border-radius: 3px;
+    border: none;
+  }
+
+  .post-container {
+    pre {
+      &:extend(.code-block);
+
+      code {
+        padding: 0;
+        color: @highlight-foreground;
+        background: none;
+        text-shadow: none;
+      }
+    }
+
+    .highlight {
+      pre {
+        border: none;
+        margin: 0;
+        padding: 1px;
+      }
+
+      table {
+        margin: 0;
+        width: auto;
+        border: none;
+      }
+
+      td {
+        border: none !important;
+        padding: 0;
+      }
+
+      figcaption {
+        .clearfix;
+        font-size: 1em;
+        color: @highlight-foreground;
+        line-height: 1em;
+        margin-bottom: 1em;
+
+        a {
+          float: right;
+          color: @highlight-foreground;
+
+          &:hover {
+            border-bottom-color: @highlight-foreground;
+          }
+        }
+      }
+
+      .gutter pre {
+        color: #666;
+        text-align: right;
+        padding-right: 20px;
+      }
+
+      .line {
+        height: 20px;
+      }
+    }
+
+    .gist table {
+      width: auto;
+
+      td {
+        border: none;
+      }
+    }
+
+    pre {
+
+      .comment {
+        color: @highlight-comment;
+      }
+
+      .variable,
+      .attribute,
+      .tag,
+      .regexp,
+      .ruby .constant,
+      .xml .tag .title,
+      .xml .pi,
+      .xml .doctype,
+      .html .doctype,
+      .css .id,
+      .css .class,
+      .css .pseudo {
+        color: @highlight-red;
+      }
+
+      .number,
+      .preprocessor,
+      .built_in,
+      .literal,
+      .params,
+      .constant,
+      .command {
+        color: @highlight-orange;
+      }
+
+      .ruby .class .title,
+      .css .rules .attribute,
+      .string,
+      .value,
+      .inheritance,
+      .header,
+      .ruby .symbol,
+      .xml .cdata,
+      .special,
+      .number,
+      .formula {
+        color: @highlight-green;
+      }
+
+      .title,
+      .css .hexcolor {
+        color: @highlight-aqua;
+      }
+
+      .function,
+      .python .decorator,
+      .python .title,
+      .ruby .function .title,
+      .ruby .title .keyword,
+      .perl .sub,
+      .javascript .title,
+      .coffeescript .title {
+        color: @highlight-blue;
+      }
+
+      .keyword,
+      .javascript .function {
+        color: @highlight-purple;
+      }
+    }
+  }

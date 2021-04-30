@@ -1,0 +1,6 @@
+<% if (site.posts.length) { %>
+    <h5><a href="<%= config.root %>archives/"><%= __('archive') %></a></h5>
+    <div class="widget">
+      <%- list_archives({ show_count: true, type: 'monthly' }) %>
+    </div>
+<% } %>

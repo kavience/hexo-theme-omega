@@ -1,0 +1,35 @@
+home: 首页
+search: 搜索
+searchTip: 输入关键字搜索
+about: 关于
+recentPosts: 最近文章
+category: 分类
+archive: 归档
+tag: 标签
+contents: 目录
+prevPost: 上一篇
+nextPost: 下一篇
+author: 作者
+postLink: 本文链接
+postReprint: 转载请注明:《%s》转自 %s，原作者：%s
+postLicense: '版权声明: 自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）'
+firstPageText: 首页
+firstPageTipText: 首页
+lastPageText: 尾页
+lastPageTipText: 尾页
+prePageText: 上一页
+prePageTipText: 上一页
+nextPageText: 下一页
+nextPageTipText: 下一页
+totalPageBeforeText: 共
+totalPageAfterText: 页
+currPageBeforeText: 当前
+currPageAfterText: 页
+totalInfoSplitStr: /
+totalRecordsBeforeText: 共
+totalRecordsAfterText: 条数据
+gopageBeforeText: 转到
+gopageAfterText: 页
+gopageButtonOkText: 确定
+buttonTipBeforeText: 第
+buttonTipAfterText: 页
