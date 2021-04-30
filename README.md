@@ -1,5 +1,10 @@
+<h1 align="center">hexo-theme-omega</h1>
+<div>
+  <p align="center">简单、可读性高的 hexo 主题<p>
+</div>
+
 ## what
-[hexo-theme-omega](https://github.com/kavience/hexo-theme-omega) 是 hexo 框架下的一个博客主题。
+[hexo-theme-omega](https://github.com/kavience/hexo-theme-omega) 是 hexo 框架下的一个博客主题。预览地址：[https://www.kavience.com](https://www.kavience.com)
 
 ![theme-preview](https://www.kavience.com/img/blog_img/theme-preview.jpg)
 
