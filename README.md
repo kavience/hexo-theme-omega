@@ -55,7 +55,7 @@
     "hexo-renderer-markdown-it": "^3.4.1",
     "hexo-server": "^1.0.0",
     "hexo-tag-cloud": "^2.1.2",
-    "hexo-translate-title": "^1.0.11",
+    "hexo-translate-title-pro": "^1.0.11",
     "hexo-wordcount": "^6.0.1"
   }
 ```
