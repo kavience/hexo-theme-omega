@@ -80,7 +80,7 @@
   
   $('.search-container-input').bind('input propertychange', function(e) {
     var searchValue = e.currentTarget.value;
-    var correctArticles = allArticles.filter(article => article.content.indexOf(searchValue) > -1 || article.title.indexOf(searchValue) > -1)
+    var correctArticles = allArticles.filter(article => article.content.toLowerCase().indexOf(searchValue.toLowerCase()) > -1 || article.title.toLowerCase().indexOf(searchValue.toLowerCase()) > -1)
     var articleListHtml = '';
     for (let index = 0; index < correctArticles.length; index++) {
       var article = correctArticles[index];
