@@ -24,9 +24,6 @@ layout: layout
 								<%}%> 
 								<%- post.title || "Untitled" %>
 							</h2>
-							<h3 class="post-subtitle">
-								<%- post.subtitle || "" %>
-							</h3>
 							<div class="post-content-preview">
 								<%- truncate(strip_html(post.content), {length: 200, omission: '...'})
 								%>...
@@ -91,4 +88,3 @@ layout: layout
 		<%- partial('_partial/sidebar') %>
 	</div>
 </div>
-

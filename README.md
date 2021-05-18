@@ -48,7 +48,7 @@
     "hexo-generator-feed": "^2.2.0",
     "hexo-generator-index-pin-top": "^0.2.2",
     "hexo-generator-searchdb": "^1.3.3",
-    "hexo-generator-seo-friendly-sitemap": "0.0.25",
+    "hexo-generator-seo-friendly-sitemap": "0.2.1",
     "hexo-generator-tag": "^1.0.0",
     "hexo-renderer-ejs": "^1.0.0",
     "hexo-renderer-less": "^2.0.2",
